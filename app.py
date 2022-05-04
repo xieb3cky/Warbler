@@ -19,8 +19,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
-toolbar = DebugToolbarExtension(app)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "secret")
+# toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
@@ -113,7 +113,6 @@ def login():
 def logout():
     """Handle logout of user."""
 
-    # IMPLEMENT THIS
     do_logout()
     flash('logging out!')
     return redirect('/login')
@@ -213,20 +212,15 @@ def stop_following(follow_id):
 def add_like(msg_id):
     """Allow logged-in user to like/un-like a warble,created by other users"""
 
-    #check curr user in session, if not flash message & redirect back to home
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/")
     
-    #get the message
     liked_message = Message.query.get(msg_id)
 
-    #user can NOT like their own message
     if liked_message.user_id == g.user.id:
         return redirect('/')
 
-
-    #get user's liked messages
     user_likes = g.user.likes
 
     #ex: user_likes = [<Message 20>, <Message 397>, <Message 867>, <Message 878>, <Message 948>]
@@ -258,7 +252,6 @@ def show_likes(user_id):
 def profile():
     """Update profile for current user."""
 
-    # IMPLEMENT THIS
     if not g.user:
         flash("Access unauthorized.", "danger")
         return redirect("/")   
@@ -282,9 +275,6 @@ def profile():
             return redirect('/')
 
     return render_template('users/edit.html', form=form, user = g.user)
-
-        
-#End
 
 
 @app.route('/users/delete', methods=["POST"])
