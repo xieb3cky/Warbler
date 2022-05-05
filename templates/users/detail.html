@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div id="warbler-hero" class="full-width"></div>
+<div id="warbler-hero" class="full-width" style="background-image: url('{{ user.header_image_url }}');"></div>
 <img src="{{ user.image_url }}" id="profile-avatar">
 <div class="row full-width">
   <div class="container">
