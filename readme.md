@@ -29,4 +29,4 @@ View of user's profile. User can edit or delete profile. To add a new message or
 ![view](https://i.imgur.com/g2V4dtW.png)
 
 User's dashboard, display of at least 100 messages only from users that logged-in user is following. Like/unlike message by clicking the thumbs up button.
-![dashboard](https://i.imgur.com/fsxcnEo.png)
+![dashboard](https://i.imgur.com/0D4ipFP.png)
